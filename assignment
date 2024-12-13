@@ -1,0 +1,758 @@
+labuser@labuser-virtual-machine:~$ git status
+fatal: not a git repository (or any of the parent directories): .git
+labuser@labuser-virtual-machine:~$ git --version
+git version 2.34.1
+labuser@labuser-virtual-machine:~$ makdir test1
+Command 'makdir' not found, did you mean:
+  command 'mmkdir' from deb mblaze (1.1-1)
+  command 'mkdir' from deb coreutils (8.32-4.1ubuntu1.2)
+Try: sudo apt install <deb name>
+labuser@labuser-virtual-machine:~$ git mkdir test1
+git: 'mkdir' is not a git command. See 'git --help'.
+labuser@labuser-virtual-machine:~$ mkdir test1
+mkdir: cannot create directory ‘test1’: File exists
+labuser@labuser-virtual-machine:~$ rm -rf
+labuser@labuser-virtual-machine:~$ mkdir test1
+mkdir: cannot create directory ‘test1’: File exists
+labuser@labuser-virtual-machine:~$ rmdir test1
+rmdir: failed to remove 'test1': Directory not empty
+labuser@labuser-virtual-machine:~$ rm -f test1
+rm: cannot remove 'test1': Is a directory
+labuser@labuser-virtual-machine:~$ rmdir -r tesr1
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
+labuser@labuser-virtual-machine:~$ rm -r test1
+rm: remove write-protected regular file 'test1/.git/objects/0b/0665468b3de039c4391fc1428a6ab0af5742b3'? 
+rm: cannot remove 'test1/.git/objects/0b': Directory not empty
+rm: remove write-protected regular file 'test1/.git/objects/a5/bce3fd2565d8f458555a0c6f42d0504a848bd5'? s
+rm: cannot remove 'test1/.git/objects/a5': Directory not empty
+rm: remove write-protected regular file 'test1/.git/objects/e3/9ba7d73a8f9b1c7bff644ecad6ce201836c2f6'? ok
+rm: cannot remove 'test1/.git/objects/e3': Directory not empty
+labuser@labuser-virtual-machine:~$ rm -f test1
+rm: cannot remove 'test1': Is a directory
+labuser@labuser-virtual-machine:~$ mkdir Test1
+labuser@labuser-virtual-machine:~$ cd Test1
+labuser@labuser-virtual-machine:~/Test1$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/Test1/.git/
+labuser@labuser-virtual-machine:~/Test1$ git init
+Reinitialized existing Git repository in /home/labuser/Test1/.git/
+labuser@labuser-virtual-machine:~/Test1$ echo "test1" > Test1
+labuser@labuser-virtual-machine:~/Test1$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Test1
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/Test1$ git commit -m "first change"
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Test1
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/Test1$ git add .
+labuser@labuser-virtual-machine:~/Test1$ git commit -m "first change"
+[master (root-commit) d3b57ab] first change
+ 1 file changed, 1 insertion(+)
+ create mode 100644 Test1
+labuser@labuser-virtual-machine:~/Test1$ git remote add origin https://github.com/print-Ram/Testt1.git
+labuser@labuser-virtual-machine:~/Test1$ git remote -v
+origin	https://github.com/print-Ram/Testt1.git (fetch)
+origin	https://github.com/print-Ram/Testt1.git (push)
+labuser@labuser-virtual-machine:~/Test1$ git push -u origin master
+Username for 'https://github.com': print-Ram
+Password for 'https://print-Ram@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 224 bytes | 224.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/print-Ram/Testt1.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/Test1$ git branch
+* master
+labuser@labuser-virtual-machine:~/Test1$ git branch devops1
+labuser@labuser-virtual-machine:~/Test1$ git checkout devops1
+Switched to branch 'devops1'
+labuser@labuser-virtual-machine:~/Test1$ git branch
+* devops1
+  master
+labuser@labuser-virtual-machine:~/Test1$ echo "Hello" >file1
+labuser@labuser-virtual-machine:~/Test1$ echo "Hello world" > file2
+labuser@labuser-virtual-machine:~/Test1$ git status
+On branch devops1
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	file1
+	file2
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/Test1$ ls -li
+total 12
+6160990 -rw-rw-r-- 1 labuser labuser  6 Dec 12 01:20 file1
+6160991 -rw-rw-r-- 1 labuser labuser 12 Dec 12 01:21 file2
+6162006 -rw-rw-r-- 1 labuser labuser  6 Dec 12 01:07 Test1
+labuser@labuser-virtual-machine:~/Test1$ git add .
+labuser@labuser-virtual-machine:~/Test1$ git commit -m "Second change"
+[devops1 094fad6] Second change
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/Test1$ git push -u origin devops1
+Username for 'https://github.com': print-Ram
+Password for 'https://print-Ram@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 331 bytes | 331.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'devops1' on GitHub by visiting:
+remote:      https://github.com/print-Ram/Testt1/pull/new/devops1
+remote: 
+To https://github.com/print-Ram/Testt1.git
+ * [new branch]      devops1 -> devops1
+Branch 'devops1' set up to track remote branch 'devops1' from 'origin'.
+labuser@labuser-virtual-machine:~/Test1$ git branch
+* devops1
+  master
+labuser@labuser-virtual-machine:~/Test1$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+labuser@labuser-virtual-machine:~/Test1$ git merge devops1
+Updating d3b57ab..094fad6
+Fast-forward
+ file1 | 1 +
+ file2 | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/Test1$ git log -p
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1, devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+ ESCOC
+
+
+
+
+
+
+
+
+
+
+23124b6 (origin/master)
+@skillsoft.com>
+
+
+
+
+
+
+
+
+
+
+
+(END)
+
+
+
+
+
+
+
+
+
+
+23124b6 (origin/master)
+@skillsoft.com>
+
+
+
+
+
+
+
+
+
+
+ ESCOD
+@@ -0,0 +1 @@
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
+ ESCOD
+@@ -0,0 +1 @@
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+ ESCOD
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+...skipping...
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1,
+ devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1,
+ devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1,
+ devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1,
+ devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1,
+ devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
+commit 094fad6fa38e788b4e063b87cec2c2de86e50bae (HEAD -> master, origin/devops1,
+ devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:23:00 2024 -0500
+
+    Second change
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..e965047
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
++Hello
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+~
+/bin/bash: -c: line 1: unexpected EOF while looking for matching `]'
+/bin/bash: -c: line 2: syntax error: unexpected end of file
+...skipping...
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..802992c
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++Hello world
+
+commit d3b57abec3580ea54802c03d84b4be6f723124b6 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Thu Dec 12 01:08:40 2024 -0500
+
+    first change
+
+diff --git a/Test1 b/Test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/Test1
+@@ -0,0 +1 @@
++test1
+~
+labuser@labuser-virtual-machine:~/Test1$ cd
+labuser@labuser-virtual-machine:~$ git clone https://github.com/print-Ram/Testt1.git
+Cloning into 'Testt1'...
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 7 (delta 0), reused 7 (delta 0), pack-reused 0 (from 0)
+Receiving objects: 100% (7/7), done.
+labuser@labuser-virtual-machine:~$ ls -li
+total 56
+6029410 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Desktop
+6029414 drwxr-xr-x 3 labuser labuser 4096 Dec 15  2023 Documents
+6029411 drwxr-xr-x 2 labuser labuser 4096 Dec 18  2023 Downloads
+6036475 -rw-rw-r-- 1 labuser labuser   53 Dec 18  2023 execute.yml
+6029415 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Music
+6029416 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Pictures
+6029413 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Public
+6030259 drwxrwxr-x 2 labuser labuser 4096 Dec 18  2023 repos
+6029322 drwx------ 6 labuser labuser 4096 Dec 15  2023 snap
+6029412 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Templates
+6161981 drwxrwxr-x 3 labuser labuser 4096 Dec 12 01:04 test1
+6161024 drwxrwxr-x 3 labuser labuser 4096 Dec 12 01:31 Test1
+6162011 drwxrwxr-x 3 labuser labuser 4096 Dec 12 01:40 Testt1
+6029418 drwxr-xr-x 2 labuser labuser 4096 Sep 12  2023 Videos
+labuser@labuser-virtual-machine:~$ cd Test1
+labuser@labuser-virtual-machine:~/Test1$ ls
+df  file1  file2  Test1
+labuser@labuser-virtual-machine:~/Test1$ git branch
+  devops1
+* master
+labuser@labuser-virtual-machine:~/Test1$ git merge devops1
+Already up to date.
+labuser@labuser-virtual-machine:~/Test1$ ls
+df  file1  file2  Test1
+labuser@labuser-virtual-machine:~/Test1$ cd
+labuser@labuser-virtual-machine:~$ mkdir dev1
+labuser@labuser-virtual-machine:~$ cd dev1
+labuser@labuser-virtual-machine:~/dev1$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/dev1/.git/
+labuser@labuser-virtual-machine:~/dev1$ git pull https://github.com/print-Ram/Testt1.git
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 204 bytes | 204.00 KiB/s, done.
+From https://github.com/print-Ram/Testt1
+ * branch            HEAD       -> FETCH_HEAD
+labuser@labuser-virtual-machine:~/dev1$ git branch
+* master
+labuser@labuser-virtual-machine:~/dev1$ ls -li
+total 4
+6162144 -rw-rw-r-- 1 labuser labuser 6 Dec 12 01:45 Test1
+labuser@labuser-virtual-machine:~/dev1$ git branch m1
+labuser@labuser-virtual-machine:~/dev1$ git checkout m1
+Switched to branch 'm1'
+labuser@labuser-virtual-machine:~/dev1$ echo "lion" > animal
+labuser@labuser-virtual-machine:~/dev1$ ls
+animal  Test1
+labuser@labuser-virtual-machine:~/dev1$ git checkout m1
+Already on 'm1'
+labuser@labuser-virtual-machine:~/dev1$ git checkout master
+Switched to branch 'master'
+labuser@labuser-virtual-machine:~/dev1$ ls
+animal  Test1
+labuser@labuser-virtual-machine:~/dev1$ git rebase master
+Current branch master is up to date.
+labuser@labuser-virtual-machine:~/dev1$ ^C
+labuser@labuser-virtual-machine:~/dev1$ ^C
+labuser@labuser-virtual-machine:~/dev1$ 
+
